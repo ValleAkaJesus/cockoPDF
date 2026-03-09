@@ -50,7 +50,7 @@ function createAndDownload() {
     let width=Math.round(entries.length**0.5);
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < width; y++) {
-            const entry = entries[x*3+y];
+            const entry = entries[x*width+y];
 
             drawTextBox(doc, entry, 20+size*x, 20+size*y, size, size);
         }
