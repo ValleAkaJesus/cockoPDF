@@ -1,34 +1,16 @@
-<!doctype html>
-<html>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Manager</title>
+</head>
+<body style="background-color: pink;">
+    <input type="text" id="entries" style="width: 200px;height:auto" placeholder="Entry 1, Entry 2, ...">
     <button id="downloadPdf">Download PDF</button>
-
-    <script type="module">
-      import { jsPDF } from "https://cdn.jsdelivr.net/npm/jspdf@latest/+esm";
-
-      document.getElementById("downloadPdf").addEventListener("click", () => {
-        const doc = new jsPDF();
-
-        const title = "Invoice";
-        const lines = [
-          "Customer: Max Mustermann",
-          "Order ID: 12345",
-          "Total: €49.99",
-          "Thank you for your purchase."
-        ];
-
-        doc.setFontSize(18);
-        doc.text(title, 20, 20);
-
-        doc.setFontSize(12);
-        let y = 35;
-        for (const line of lines) {
-          doc.text(line, 20, y);
-          y += 8;
-        }
-
-        doc.save("custom.pdf");
-      });
+    <script type="module" src="./src.js">
     </script>
-  </body>
+</body>
 </html>
+
+  
