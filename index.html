@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <body>
+    <button id="downloadPdf">Download PDF</button>
+
+    <script type="module">
+      import { jsPDF } from "https://cdn.jsdelivr.net/npm/jspdf@latest/+esm";
+
+      document.getElementById("downloadPdf").addEventListener("click", () => {
+        const doc = new jsPDF();
+
+        const title = "Invoice";
+        const lines = [
+          "Customer: Max Mustermann",
+          "Order ID: 12345",
+          "Total: €49.99",
+          "Thank you for your purchase."
+        ];
+
+        doc.setFontSize(18);
+        doc.text(title, 20, 20);
+
+        doc.setFontSize(12);
+        let y = 35;
+        for (const line of lines) {
+          doc.text(line, 20, y);
+          y += 8;
+        }
+
+        doc.save("custom.pdf");
+      });
+    </script>
+  </body>
+</html>
