@@ -21,10 +21,20 @@ function drawTextBox(doc, text, x, y, w, h, padding = 8) {
     });
 }
 
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let size=80;
 function createAndDownload() {
     const doc = new jsPDF({ unit: "pt", format: "a4" });
 
     let entries = document.getElementById("entries").value.split(",");
+    shuffleArray(entries);
 
     if(entries.length != 16 && entries.length!= 9 && entries.length!=25){
         //entries muss ein quadrat werden
@@ -32,17 +42,17 @@ function createAndDownload() {
         return;
     }
 
+
      doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
 
-    //todo: shuffle entries
 
     let width=Math.round(entries.length**0.5);
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < width; y++) {
             const entry = entries[x*3+y];
 
-            drawTextBox(doc, entry, 20+60*x, 20+60*y, 60, 60);
+            drawTextBox(doc, entry, 20+size*x, 20+size*y, size, size);
         }
         
     }
